@@ -37,7 +37,7 @@
       <p style="margin-top: 30px; white-space: pre-wrap;">{{content.description}}</p>
 
       {% if content.image %}
-          <img src="{{content.image.url}}" class="card-img-top" id="image">
+          <img src="{% static content.image.url %}" class="card-img-top" id="image">
       {% else %}
 
       {% endif %} 
