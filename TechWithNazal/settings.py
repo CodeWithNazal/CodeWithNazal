@@ -16,6 +16,10 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -121,16 +125,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-import cloudinary
-          
-cloudinary.config( 
-  cloud_name = "dw6hletzo", 
-  api_key = "515875555314776", 
-  api_secret = "jekz31l_VUEGhTfE9YyCMYu2qbU" 
-)
-
-
-
 STATIC_URL = 'static/'
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
@@ -146,3 +140,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+cloudinary.config( 
+    cloud_name = "dw6hletzo", 
+    api_key = "515875555314776", 
+    api_secret = "jekz31l_VUEGhTfE9YyCMYu2qbU" 
+)
