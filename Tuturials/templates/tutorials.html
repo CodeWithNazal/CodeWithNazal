@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+    a {
+        text-decoration: none;
+    }
+
+    #thumbnail {
+        width: 100%;
+        height: 50%;
+    }
+
+    #main {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    #tutorials-main-card {
+        margin: 0 auto;
+        margin-top: 10px;
+        width: 22rem;
+    }
+
+    @media (max-width: 750px) {
+        #main {
+            width: 96%;
+            margin: 0 auto;
+        }
+    }
+</style>
+
+<div style="margin-top: 50px;"></div>
+
+<div class="d-flex flex-wrap" id="main">
+
+    {% for tutorial in tutorials %}
+
+    <a class="card" id="tutorials-main-card" href="{% url 'tutorial' tutorial.title %}">
+        <img src="{{tutorial.thumbnail.url}}" class="card-img-top" alt="thumbnail" id="thumbnail">
+        <div class="card-body">
+          <h5 class="card-title">{{tutorial.title}}</h5>
+          <p class="card-text">{{tutorial.description}}</p>
+        </div>
+        <p style="margin-left: 5%;">{{tutorial.created_at}}</p>
+    </a>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

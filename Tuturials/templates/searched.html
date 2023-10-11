@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<style>
+    #introduction {
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+
+    #tutorials-main-card {
+        margin: 0 auto;
+        margin-top: 50px;
+        width: 22rem;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    #thumbnail {
+        width: 100%;
+        height: 50%;
+    }
+
+    #news-card {
+        margin: 0 auto; width: 80%; margin-top: 20px;
+    }
+
+    #main {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 750px) {
+        #introduction {
+            width: 96%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        #main {
+            width: 96%;
+            margin: 0 auto;
+        }
+
+        #news-card {
+            margin: 0 auto; 
+            width: 96%; 
+            margin-top: 20px;
+        }
+    }
+</style>
+
+{% if tutorials %}
+<h2 style="color: blueviolet; margin-top: 50px; text-align: center;">Tutorials</h2>
+
+<div class="d-flex flex-wrap" id="main">
+
+    {% for tutorial in tutorials %}
+
+    <a class="card" id="tutorials-main-card"  href="{% url 'tutorial' tutorial.title %}">
+        <img src="{{tutorial.thumbnail.url}}" class="card-img-top" alt="thumbnail" id="thumbnail">
+        <div class="card-body">
+          <h5 class="card-title">{{tutorial.title}}</h5>
+          <p class="card-text">{{tutorial.description}}</p>
+        </div>
+        <p style="margin-left: 5%;">{{tutorial.created_at}}</p>
+    </a>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+{% if blogs %}
+<h2 style="color: blueviolet; margin-top: 50px; text-align: center;">Blogs</h2>
+
+<div class="d-flex flex-wrap" id="main">
+    {% for blog in blogs %}
+    <a class="card mb-3" style="width: 22rem; margin: 0 auto; margin-top: 50px;" href="{% url 'blog' blog.title %}">
+        <div class="card-header">
+            <p style="float: left;">Coding</p>
+            <p style="float: right;">{{ blog.created_at }}</p>
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <p class="card-text">
+                {{ blog.description|truncatewords:30 }}
+            </p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endif %}
+
+{% if news %}
+<h2 style="color: blueviolet; margin-top: 50px; text-align: center;" >Tech News</h2>
+
+<div style="margin-top: 50px;"></div>
+
+{% for single_news in news %}
+
+<a class="card" id="news-card" href="{% url 'news_instance' single_news.title %}">
+    <div class="card-header">
+        <p style="float: left;">{{single_news.title}}</p>
+        <p style="float: right;">{{single_news.created_at}}</p>
+    </div>    
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{single_news.description|truncatewords:30}}</p>
+      </blockquote>
+    </div>
+</a>
+
+{% endfor %}
+
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+    #main {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    #news-card {
+      margin: 0 auto; 
+      width: 80%; 
+      margin-top: 20px;
+    }
+
+    @media (max-width: 750px) {
+        #main {
+            width: 96%;
+            margin: 0 auto;
+        }
+
+        #news-card {
+          margin: 0 auto; 
+          width: 100%; 
+          margin-top: 20px;
+      }
+    }
+</style>
+
+<div class="d-flex flex-wrap" id="main">
+
+    {% for news in all_news %}
+
+    <a class="card" id="news-card" href="{% url 'news_instance' news.title %}">
+        <div class="card-header">{{news.title}}</div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p style="white-space: pre-wrap;">{{news.description}}</p>
+          </blockquote>
+        </div>
+      </a>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

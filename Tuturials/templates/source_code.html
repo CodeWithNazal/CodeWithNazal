@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    #introduction {
+        width: 60%;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+
+    #main {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 50px;   
+    }
+
+    @media (max-width: 750px) {
+        #main {
+            width: 96%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        #introduction {
+            width: 96%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+    }
+
+</style>
+
+<div class="card text-center" id="introduction">
+    <div class="card-header">
+      Tutorial
+    </div>
+    <div class="card-body">
+      <h3 class="card-title">{{tutorial.title}}</h3>
+      <p class="card-text">{{tutorial.description}}</p>
+    </div>
+    <div class="card-footer text-body-secondary">
+      {{tutorial.created_at}}
+    </div>
+</div>
+
+<div id="main">
+    {% for source_code in source_codes %}
+        <div class="card" style="margin-top: 30px;">
+            <h5 class="card-header">{{source_code.code_file_name}}</h5>
+            <div class="card-body">
+            <code style="white-space: pre-wrap;">{{source_code.code}}</code>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

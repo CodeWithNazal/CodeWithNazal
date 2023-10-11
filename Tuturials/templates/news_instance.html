@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+  #main {
+      width: 50%;
+      margin: 0 auto;
+      margin-top: 50px;   
+  }
+
+  #image {
+      width: 80%;
+      margin: 0 auto;
+      margin-top: 30px;
+      display: block;
+  }
+
+  @media (max-width: 750px) {
+        #main {
+            width: 96%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+    }
+</style>
+
+<div id="main">
+
+  {% for content in news_contents %}
+
+      {% if content.title %}
+          <h3 style="margin-top: 30px; ">{{content.title}}</h3>
+      {% else %}
+      {% endif %}
+
+      <p style="margin-top: 30px; white-space: pre-wrap;">{{content.description}}</p>
+
+      {% if content.image %}
+          <img src="{{content.image.url}}" class="card-img-top" id="image">
+      {% else %}
+
+      {% endif %} 
+
+  {% endfor %}
+</div>
+
+{% if is_superuser %}
+
+<div style="margin: 0 auto; width: 50%;   white-space: nowrap;">
+    <h1>Create Model</h1>
+    <form action="{% url 'create-news' %}" method="POST" style="margin-top: 50px;" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <input type="hidden" name="news-title" value="{{ single_news.title }}">
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="news-content-title"><br><br>
+    
+        <label for="description">Description:</label><br>
+        <textarea id="description" rows="4" cols="100" name="news-content-description" wrap="off"></textarea><br><br>
+    
+        <label for="image">Image File:</label>
+        <input type="file" id="image" name="news-content-image" accept="image/*"><br><br>
+  
+        <input type="submit" value="Create Model">
+    </form>
+</div>
+
+
+{% endif %}
+
+{% endblock %}

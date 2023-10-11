@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<style>
+    #main {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    #blog-card {
+        margin: 0 auto; 
+        width: 80%; 
+        margin-top: 20px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    @media (max-width: 750px) {
+        #main {
+            width: 96%;
+            margin: 0 auto;
+        }
+
+        #blog-card {
+          margin: 0 auto; 
+          width: 100%; 
+          margin-top: 20px;
+      }
+    }
+</style>
+
+<div class="d-flex flex-wrap" id="main">
+
+    {% for blog in blogs %}
+
+    <a class="card" id="blog-card" href="{% url 'blog' blog.title %}">
+        <div class="card-header">{{blog.title}}</div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{blog.description}}</p>
+          </blockquote>
+        </div>
+      </a>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
