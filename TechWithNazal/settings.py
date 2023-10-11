@@ -124,14 +124,12 @@ USE_TZ = True
 import cloudinary
           
 cloudinary.config( 
-  cloud_name = "dib8rsmki", 
-  api_key = "232175649721742", 
-  api_secret = "GpaCgxczLehzVe0iZZe9u2JLDNM" 
+  cloud_name = "dw6hletzo", 
+  api_key = "515875555314776", 
+  api_secret = "jekz31l_VUEGhTfE9YyCMYu2qbU" 
 )
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
 
