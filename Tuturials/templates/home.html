@@ -81,7 +81,7 @@
     {% for tutorial in tutorials %}
 
     <a class="card" id="tutorials-main-card"  href="{% url 'tutorial' tutorial.title %}">
-        <img src="{% static tutorial.thumbnail.url %}" class="card-img-top" alt="thumbnail" id="thumbnail">
+        <img src="{{tutorial.thumbnail.url}}" class="card-img-top" alt="thumbnail" id="thumbnail">
         <div class="card-body">
           <h5 class="card-title">{{tutorial.title}}</h5>
           <p class="card-text">{{tutorial.description}}</p>
