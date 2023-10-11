@@ -32,19 +32,18 @@ ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Tuturials'
+    'Tuturials',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -129,13 +128,17 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'staticfiles_build'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
-
-
+import cloudinary
+          
+cloudinary.config( 
+  cloud_name = "dib8rsmki", 
+  api_key = "232175649721742", 
+  api_secret = "GpaCgxczLehzVe0iZZe9u2JLDNM" 
+)
 
 
 # Default primary key field type
