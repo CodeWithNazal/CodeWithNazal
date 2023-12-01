@@ -19,7 +19,9 @@ urlpatterns = [
     path('news/<str:news_title>', views.news_instance, name='news_instance'),
     path('create_news', views.create_news, name='create-news'),
 
-    path('searched/', views.searched, name='searched')
+    path('searched/', views.searched, name='searched'),
+
+    path('youtube-in-python', views.promotion, name='promotion')
 ]
 
 

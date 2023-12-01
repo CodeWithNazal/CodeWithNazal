@@ -184,3 +184,7 @@ def searched(request):
 
     else:
         return redirect("home")
+
+def promotion(request):
+    youtube_video_url = "https://youtu.be/GA0621y0zUQ?si=O-W0X2_WUhh2HP7E"
+    return redirect(youtube_video_url)
